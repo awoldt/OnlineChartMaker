@@ -124,39 +124,99 @@ const BarChart = () => {
                 ></div>
               </span>
               <Collapse in={x.themeCollapse}>
-                <Row
-                  className="justify-content-center"
-                  id="theme_colors_collapse_div"
-                >
-                  <Col>
-                    <div
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        backgroundColor: "red",
-                      }}
-                    ></div>
-                  </Col>
-                  <Col>
-                    <div
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        backgroundColor: "blue",
-                      }}
-                    ></div>
-                  </Col>
+                <div>
+                  <Row
+                    id="theme_colors_collapse_div"
+                    style={{ padding: "25px" }}
+                  >
+                    <Col>
+                      <div
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          backgroundColor: "red",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          const t = [...dataset];
+                          t[index].backgroundColor = "red";
+                          t[index].themeCollapse = !t[index].themeCollapse;
 
-                  <Col>
-                    <div
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        backgroundColor: "green",
-                      }}
-                    ></div>
-                  </Col>
-                </Row>
+                          setDataset(t);
+                        }}
+                      ></div>
+                    </Col>
+                    <Col>
+                      <div
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          backgroundColor: "blue",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          const t = [...dataset];
+                          t[index].backgroundColor = "blue";
+                          t[index].themeCollapse = !t[index].themeCollapse;
+
+                          setDataset(t);
+                        }}
+                      ></div>
+                    </Col>
+
+                    <Col>
+                      <div
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          backgroundColor: "green",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          const t = [...dataset];
+                          t[index].backgroundColor = "green";
+                          t[index].themeCollapse = !t[index].themeCollapse;
+
+                          setDataset(t);
+                        }}
+                      ></div>
+                    </Col>
+                    <Col>
+                      <div
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          backgroundColor: "yellow",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          const t = [...dataset];
+                          t[index].backgroundColor = "yellow";
+                          t[index].themeCollapse = !t[index].themeCollapse;
+
+                          setDataset(t);
+                        }}
+                      ></div>
+                    </Col>
+                    <Col>
+                      <div
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          backgroundColor: "orange",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          const t = [...dataset];
+                          t[index].backgroundColor = "orange";
+                          t[index].themeCollapse = !t[index].themeCollapse;
+
+                          setDataset(t);
+                        }}
+                      ></div>
+                    </Col>
+                  </Row>
+                </div>
               </Collapse>
               <DebounceInput
                 placeholder={"Change " + x.label + " name"}
@@ -174,12 +234,10 @@ const BarChart = () => {
               {labels.map((y, index2) => {
                 return (
                   <div key={index2}>
-                    <label>{y}</label>
+                    <label htmlFor={x.label + "_" + y}>{y}</label>
                     <DebounceInput
                       onChange={(x) => {
-                        if (isNaN(x.target.value)) {
-                          alert("must be a number");
-                        } else {
+                        if (isNaN(x.target.value) === false) {
                           const d = [...dataset];
                           d[index].data[index2] = x.target.value;
                           setDataset(d);
@@ -189,6 +247,7 @@ const BarChart = () => {
                       className={"form-control"}
                       style={{ maxWidth: "100px", display: "inline" }}
                       maxLength={20}
+                      id={x.label + "_" + y}
                     />
                   </div>
                 );

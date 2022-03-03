@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { Row, Col, Collapse } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { DebounceInput } from "react-debounce-input";
 import ThemeCollapse from "../ThemeCollapse";
+import LabelInputs from "../LabelInputs";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -86,7 +87,6 @@ const BarChart = () => {
         />
         <hr></hr>
         <p>Datasets ({dataset.length})</p>
-
         {/* loop through all data topics ex: coke, sprite, fanta */}
         {dataset.map((x, index) => {
           return (
@@ -127,7 +127,7 @@ const BarChart = () => {
               </span>
               <ThemeCollapse d={dataset} sd={setDataset} s={x} i={index} />
               <DebounceInput
-                placeholder={"Change " + x.label + " name"}
+                placeholder={"Name"}
                 onChange={(x) => {
                   const d = [...dataset];
                   d[index].label = x.target.value;
@@ -139,28 +139,7 @@ const BarChart = () => {
                 maxLength={100}
                 key={index}
               />
-              {/* each label entry on each dataset ex: jan, feb, march */}
-              {labels.map((y, index2) => {
-                return (
-                  <div key={index2}>
-                    <label htmlFor={x.label + "_" + y}>{y}</label>
-                    <DebounceInput
-                      onChange={(x) => {
-                        if (isNaN(x.target.value) === false) {
-                          const d = [...dataset];
-                          d[index].data[index2] = x.target.value;
-                          setDataset(d);
-                        }
-                      }}
-                      debounceTimeout={100}
-                      className={"form-control"}
-                      style={{ maxWidth: "100px", display: "inline" }}
-                      maxLength={20}
-                      id={x.label + "_" + y}
-                    />
-                  </div>
-                );
-              })}
+              <LabelInputs d={dataset} l={labels} sd={setDataset} i1={index} />
               <hr></hr>
             </div>
           );

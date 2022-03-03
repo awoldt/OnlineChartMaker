@@ -29,12 +29,12 @@ const ThemeCollapse = ({ d, sd, s, i }) => {
   const c = getAvailableColors(colors, colorsUsed);
 
   return (
-    <Collapse in={s.themeCollapse}>
+    <Collapse in={s.themeCollapse} style={{paddingLeft: '25px', paddingRight: '25px'}}>
       <div>
-        <Row id="theme_colors_collapse_div" style={{ padding: "25px" }}>
+        <Row id="theme_colors_collapse_div" style={{ padding: "25px", backgroundColor: '#f2f2f2'}}>
           {c.map((x) => {
             return (
-              <Col>
+              <Col xs={4} className='mb-3'>
                 <div
                   style={{
                     width: "50px",

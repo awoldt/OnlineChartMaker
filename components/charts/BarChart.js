@@ -26,29 +26,10 @@ ChartJS.register(
 
 //////////////////////////////////////////////////////////////////
 
-const BarChart = () => {
-  const [chartTitle, setChartTitle] = useState("Soda Sales for First Quarter");
+const BarChart = ({ ct }) => {
+  const [chartTitle, setChartTitle] = useState(ct.chartTitle);
   const [indexAxis, setIndexAxis] = useState("x");
-  const [dataset, setDataset] = useState([
-    {
-      label: "Coca-Cola",
-      backgroundColor: "red",
-      data: [1, 2, 3],
-      themeCollapse: false,
-    },
-    {
-      label: "Fanta",
-      backgroundColor: "orange",
-      data: [3, 1, 2],
-      themeCollapse: false,
-    },
-    {
-      label: "Sprite",
-      backgroundColor: "green",
-      data: [2, 3, 1],
-      themeCollapse: false,
-    },
-  ]);
+  const [dataset, setDataset] = useState(ct.ds);
   const [labels, setLabels] = useState(["January", "February", "March"]);
 
   const data = {

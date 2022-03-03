@@ -9,7 +9,9 @@ export default function Home() {
           <a href={"/bar"}>Bar chart</a>
         </li>
       </ul>
-      <p>made by <a href={'https://awoldt.com'}>awoldt</a></p>
+      <p>
+        made by <a href={"https://awoldt.com"}>awoldt</a>
+      </p>
     </Container>
   );
 }

@@ -26,10 +26,29 @@ ChartJS.register(
 
 //////////////////////////////////////////////////////////////////
 
-const BarChart = ({ ct }) => {
-  const [chartTitle, setChartTitle] = useState(ct.chartTitle);
+const BarChart = () => {
+  const [chartTitle, setChartTitle] = useState("Soda Sales");
   const [indexAxis, setIndexAxis] = useState("x");
-  const [dataset, setDataset] = useState(ct.ds);
+  const [dataset, setDataset] = useState([
+    {
+      label: "Coca-Cola",
+      backgroundColor: "red",
+      data: [1, 2, 3],
+      themeCollapse: false,
+    },
+    {
+      label: "Fanta",
+      backgroundColor: "orange",
+      data: [3, 1, 2],
+      themeCollapse: false,
+    },
+    {
+      label: "Sprite",
+      backgroundColor: "green",
+      data: [2, 3, 1],
+      themeCollapse: false,
+    },
+  ]);
   const [labels, setLabels] = useState(["January", "February", "March"]);
 
   const data = {
@@ -54,11 +73,7 @@ const BarChart = ({ ct }) => {
   return (
     <Row style={{ padding: "50px" }}>
       <Col lg={8}>
-        <Bar
-          style={{ border: "1px solid black", padding: "10px" }}
-          options={options}
-          data={data}
-        />
+        <Bar options={options} data={data} />
         <input
           type="checkbox"
           id="invert_axis"
@@ -84,6 +99,7 @@ const BarChart = ({ ct }) => {
           style={{ maxWidth: "400px" }}
           id="chart_title"
           maxLength={100}
+          placeholder={chartTitle}
         />
         <hr></hr>
         <p>
@@ -99,10 +115,7 @@ const BarChart = ({ ct }) => {
         {/* loop through all data topics ex: coke, sprite, fanta */}
         {dataset.map((x, index) => {
           return (
-            <div
-              key={index}
-              style={{ border: "1px solid red", padding: "10px" }}
-            >
+            <div key={index} style={{ padding: "10px" }}>
               <h2 style={{ display: "inline" }}>{x.label} </h2>{" "}
               <span
                 aria-expanded={x.themeCollapse}
@@ -134,9 +147,29 @@ const BarChart = ({ ct }) => {
                   }}
                 ></div>
               </span>
+              <span
+                style={{ float: "right", cursor: "pointer" }}
+                onClick={() => {
+                  const d = [...dataset];
+                  d.splice(index, 1);
+                  setDataset(d);
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="red"
+                  className="bi bi-x-square"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+              </span>
               <ThemeCollapse d={dataset} sd={setDataset} s={x} i={index} />
               <DebounceInput
-                placeholder={"Name"}
+                placeholder={x.label}
                 onChange={(x) => {
                   const d = [...dataset];
                   d[index].label = x.target.value;
@@ -144,7 +177,11 @@ const BarChart = ({ ct }) => {
                 }}
                 debounceTimeout={500}
                 className={"form-control"}
-                style={{ maxWidth: "400px", marginTop: "25px" }}
+                style={{
+                  maxWidth: "400px",
+                  marginTop: "25px",
+                  marginBottom: "10px",
+                }}
                 maxLength={100}
                 key={index}
               />
@@ -156,7 +193,7 @@ const BarChart = ({ ct }) => {
         {dataset.length < 8 && (
           <p
             className="text-center mt-4"
-            style={{ color: "blue", cursor: "pointer" }}
+            style={{ color: "#0d6efd", cursor: "pointer" }}
             role="button"
             onClick={() => {
               if (dataset.length < 8) {
@@ -175,7 +212,7 @@ const BarChart = ({ ct }) => {
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
-              fill="currentColor"
+              fill="#0d6efd"
               className="bi bi-plus-square"
               viewBox="0 0 16 16"
             >

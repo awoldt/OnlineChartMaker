@@ -18,7 +18,7 @@ const LabelInputs = ({ d, l, sd, i1 }) => {
               }}
               debounceTimeout={100}
               className={"form-control"}
-              style={{ maxWidth: "100px", display: "inline" }}
+              style={{ maxWidth: "100px", display: "inline", marginBottom: '10px', marginLeft: '5px'}}
               maxLength={20}
               id={d[i1].label + "_" + y}
             />

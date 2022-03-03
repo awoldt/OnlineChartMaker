@@ -28,6 +28,7 @@ ChartJS.register(
 
 const BarChart = () => {
   const [chartTitle, setChartTitle] = useState("Soda Sales for First Quarter");
+  const [indexAxis, setIndexAxis] = useState("x");
   const [dataset, setDataset] = useState([
     {
       label: "Coca-Cola",
@@ -56,6 +57,7 @@ const BarChart = () => {
   };
 
   const options = {
+    indexAxis: indexAxis,
     responsive: true,
     plugins: {
       legend: {
@@ -70,8 +72,25 @@ const BarChart = () => {
 
   return (
     <Row style={{ padding: "50px" }}>
-      <Col lg={8} >
-        <Bar style={{border: '1px solid black', padding: '10px'}} options={options} data={data} />
+      <Col lg={8}>
+        <Bar
+          style={{ border: "1px solid black", padding: "10px" }}
+          options={options}
+          data={data}
+        />
+        <input
+          type="checkbox"
+          id="invert_axis"
+          style={{ marginRight: "3px" }}
+          onClick={(x) => {
+            if (x.target.checked == false) {
+              setIndexAxis("x");
+            } else {
+              setIndexAxis("y");
+            }
+          }}
+        />
+        <label htmlFor="invert_axis">Invert axis</label>
       </Col>
       <Col lg={4}>
         <label htmlFor="chart_title">Chart Title</label>
@@ -89,13 +108,11 @@ const BarChart = () => {
         <p>
           Datasets ({dataset.length}){" "}
           {dataset.map((x, index) => {
-            if(index == dataset.length-1) {
+            if (index == dataset.length - 1) {
               return " and " + x.label;
+            } else {
+              return x.label + ", ";
             }
-            else {
-               return x.label + ", ";
-            }
-           
           })}
         </p>
         {/* loop through all data topics ex: coke, sprite, fanta */}

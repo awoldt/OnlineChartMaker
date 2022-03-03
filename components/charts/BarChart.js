@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Row, Col, Collapse } from "react-bootstrap";
 import { DebounceInput } from "react-debounce-input";
+import ThemeCollapse from "../ThemeCollapse";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -86,6 +87,7 @@ const BarChart = () => {
         <hr></hr>
         <p>Datasets ({dataset.length})</p>
 
+        {/* loop through all data topics ex: coke, sprite, fanta */}
         {dataset.map((x, index) => {
           return (
             <div
@@ -123,101 +125,7 @@ const BarChart = () => {
                   }}
                 ></div>
               </span>
-              <Collapse in={x.themeCollapse}>
-                <div>
-                  <Row
-                    id="theme_colors_collapse_div"
-                    style={{ padding: "25px" }}
-                  >
-                    <Col>
-                      <div
-                        style={{
-                          width: "50px",
-                          height: "50px",
-                          backgroundColor: "red",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          const t = [...dataset];
-                          t[index].backgroundColor = "red";
-                          t[index].themeCollapse = !t[index].themeCollapse;
-
-                          setDataset(t);
-                        }}
-                      ></div>
-                    </Col>
-                    <Col>
-                      <div
-                        style={{
-                          width: "50px",
-                          height: "50px",
-                          backgroundColor: "blue",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          const t = [...dataset];
-                          t[index].backgroundColor = "blue";
-                          t[index].themeCollapse = !t[index].themeCollapse;
-
-                          setDataset(t);
-                        }}
-                      ></div>
-                    </Col>
-
-                    <Col>
-                      <div
-                        style={{
-                          width: "50px",
-                          height: "50px",
-                          backgroundColor: "green",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          const t = [...dataset];
-                          t[index].backgroundColor = "green";
-                          t[index].themeCollapse = !t[index].themeCollapse;
-
-                          setDataset(t);
-                        }}
-                      ></div>
-                    </Col>
-                    <Col>
-                      <div
-                        style={{
-                          width: "50px",
-                          height: "50px",
-                          backgroundColor: "yellow",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          const t = [...dataset];
-                          t[index].backgroundColor = "yellow";
-                          t[index].themeCollapse = !t[index].themeCollapse;
-
-                          setDataset(t);
-                        }}
-                      ></div>
-                    </Col>
-                    <Col>
-                      <div
-                        style={{
-                          width: "50px",
-                          height: "50px",
-                          backgroundColor: "orange",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          const t = [...dataset];
-                          t[index].backgroundColor = "orange";
-                          t[index].themeCollapse = !t[index].themeCollapse;
-
-                          setDataset(t);
-                        }}
-                      ></div>
-                    </Col>
-                  </Row>
-                </div>
-              </Collapse>
+              <ThemeCollapse d={dataset} sd={setDataset} s={x} i={index} />
               <DebounceInput
                 placeholder={"Change " + x.label + " name"}
                 onChange={(x) => {
@@ -231,6 +139,7 @@ const BarChart = () => {
                 maxLength={100}
                 key={index}
               />
+              {/* each label entry on each dataset ex: jan, feb, march */}
               {labels.map((y, index2) => {
                 return (
                   <div key={index2}>

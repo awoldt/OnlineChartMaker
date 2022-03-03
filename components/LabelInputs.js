@@ -7,7 +7,7 @@ const LabelInputs = ({ d, l, sd, i1 }) => {
       {l.map((y, index2) => {
         return (
           <div key={index2}>
-            <label htmlFor={d.label + "_" + y}>{y}</label>
+            <label htmlFor={d[i1].label + "_" + y}>{y}</label>
             <DebounceInput
               onChange={(x) => {
                 if (isNaN(x.target.value) === false) {
@@ -20,7 +20,7 @@ const LabelInputs = ({ d, l, sd, i1 }) => {
               className={"form-control"}
               style={{ maxWidth: "100px", display: "inline" }}
               maxLength={20}
-              id={d.label + "_" + y}
+              id={d[i1].label + "_" + y}
             />
           </div>
         );

@@ -27,25 +27,25 @@ ChartJS.register(
 //////////////////////////////////////////////////////////////////
 
 const BarChart = () => {
-  const [chartTitle, setChartTitle] = useState("Soda Sales");
+  const [chartTitle, setChartTitle] = useState("Soda Sales (in Millions)");
   const [indexAxis, setIndexAxis] = useState("x");
   const [dataset, setDataset] = useState([
     {
       label: "Coca-Cola",
       backgroundColor: "red",
-      data: [1, 2, 3],
+      data: [543, 234, 435],
       themeCollapse: false,
     },
     {
       label: "Fanta",
       backgroundColor: "orange",
-      data: [3, 1, 2],
+      data: [645, 765, 234],
       themeCollapse: false,
     },
     {
       label: "Sprite",
       backgroundColor: "green",
-      data: [2, 3, 1],
+      data: [765, 345, 879],
       themeCollapse: false,
     },
   ]);
@@ -77,7 +77,12 @@ const BarChart = () => {
         <input
           type="checkbox"
           id="invert_axis"
-          style={{ marginRight: "3px" }}
+          style={{
+            marginRight: "3px",
+            marginTop: "10px",
+            width: "20px",
+            height: "20px",
+          }}
           onClick={(x) => {
             if (x.target.checked == false) {
               setIndexAxis("x");
@@ -86,9 +91,18 @@ const BarChart = () => {
             }
           }}
         />
-        <label htmlFor="invert_axis">Invert axis</label>
+        <label htmlFor="invert_axis" style={{ fontSize: "25px" }}>
+          Invert axis
+        </label>
       </Col>
-      <Col lg={4}>
+      <Col
+        lg={4}
+        style={{
+          backgroundColor: "#f2f2f2",
+          borderRadius: "10px",
+          padding: "10px",
+        }}
+      >
         <label htmlFor="chart_title">Chart Title</label>
         <DebounceInput
           onChange={(x) => {
@@ -96,22 +110,51 @@ const BarChart = () => {
           }}
           debounceTimeout={500}
           className={"form-control"}
-          style={{ maxWidth: "400px" }}
+          style={{ maxWidth: "400px", marginBottom: "50px" }}
           id="chart_title"
           maxLength={100}
           placeholder={chartTitle}
         />
+        {dataset.length !== 0 && (
+          <p>
+            Datasets ({dataset.length}){" "}
+            {dataset.map((x, index) => {
+              if (dataset.length == 1) {
+                return <b>{x.label}</b>;
+              } else {
+                if (dataset.length == 2) {
+                  if (index == dataset.length - 1) {
+                    return (
+                      <span>
+                        {" "}
+                        and <b>{x.label}</b>
+                      </span>
+                    );
+                  } else {
+                    return <b>{x.label}</b>;
+                  }
+                } else {
+                  if (index == dataset.length - 1) {
+                    return (
+                      <span>
+                        {" "}
+                        and <b>{x.label}</b>
+                      </span>
+                    );
+                  } else {
+                    return (
+                      <span>
+                        <b>{x.label}</b>,{" "}
+                      </span>
+                    );
+                  }
+                }
+              }
+            })}
+          </p>
+        )}
         <hr></hr>
-        <p>
-          Datasets ({dataset.length}){" "}
-          {dataset.map((x, index) => {
-            if (index == dataset.length - 1) {
-              return " and " + x.label;
-            } else {
-              return x.label + ", ";
-            }
-          })}
-        </p>
+
         {/* loop through all data topics ex: coke, sprite, fanta */}
         {dataset.map((x, index) => {
           return (

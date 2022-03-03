@@ -31,7 +31,7 @@ const ThemeCollapse = ({ d, sd, s, i }) => {
   return (
     <Collapse
       in={s.themeCollapse}
-      style={{ paddingLeft: "25px", paddingRight: "25px", marginTop: '10px'}}
+      style={{ paddingLeft: "25px", paddingRight: "25px", marginTop: "10px" }}
     >
       <div>
         <Row

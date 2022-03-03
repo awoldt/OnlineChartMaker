@@ -30,19 +30,19 @@ const BarChart = () => {
   const [dataset, setDataset] = useState([
     {
       label: "Coca-Cola",
-      backgroundColor: "#F40009",
+      backgroundColor: "red",
       data: [1, 2, 3],
       themeCollapse: false,
     },
     {
       label: "Fanta",
-      backgroundColor: "#FF8300",
+      backgroundColor: "orange",
       data: [3, 1, 2],
       themeCollapse: false,
     },
     {
       label: "Sprite",
-      backgroundColor: "#008B47",
+      backgroundColor: "green",
       data: [2, 3, 1],
       themeCollapse: false,
     },

@@ -70,8 +70,8 @@ const BarChart = () => {
 
   return (
     <Row style={{ padding: "50px" }}>
-      <Col lg={8}>
-        <Bar options={options} data={data} />
+      <Col lg={8} >
+        <Bar style={{border: '1px solid black', padding: '10px'}} options={options} data={data} />
       </Col>
       <Col lg={4}>
         <label htmlFor="chart_title">Chart Title</label>
@@ -86,7 +86,18 @@ const BarChart = () => {
           maxLength={100}
         />
         <hr></hr>
-        <p>Datasets ({dataset.length})</p>
+        <p>
+          Datasets ({dataset.length}){" "}
+          {dataset.map((x, index) => {
+            if(index == dataset.length-1) {
+              return " and " + x.label;
+            }
+            else {
+               return x.label + ", ";
+            }
+           
+          })}
+        </p>
         {/* loop through all data topics ex: coke, sprite, fanta */}
         {dataset.map((x, index) => {
           return (
@@ -167,7 +178,7 @@ const BarChart = () => {
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-plus-square"
+              className="bi bi-plus-square"
               viewBox="0 0 16 16"
             >
               <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />

@@ -12,6 +12,8 @@ const LabelCollapse = ({ l, sl, sd }) => {
         backgroundColor: "rgb(242, 242, 242)",
         padding: "15px",
         marginBottom: "25px",
+        border: '.5px solid black',
+        borderRadius: '10px'
       }}
     >
       <span
@@ -22,6 +24,7 @@ const LabelCollapse = ({ l, sl, sd }) => {
           setDatasetCollapse(!datasetCollapse);
           setCollapsed(!collapsed);
         }}
+        role='button'
       >
         <span
           style={{ display: "inline", fontSize: "24px", fontWeight: "bold" }}

@@ -10,7 +10,14 @@ const DatasetCollapse = ({ d, setd, la }) => {
   const [collapsed, setCollapsed] = useState(true); //collapsed on pageload
 
   return (
-    <div style={{ backgroundColor: "rgb(242, 242, 242)", padding: "15px" }}>
+    <div
+      style={{
+        backgroundColor: "rgb(242, 242, 242)",
+        padding: "15px",
+        border: ".5px solid black",
+        borderRadius: "10px",
+      }}
+    >
       <span
         aria-expanded={datasetCollapse}
         aria-controls="dataset_collapse_div"
@@ -19,6 +26,7 @@ const DatasetCollapse = ({ d, setd, la }) => {
           setDatasetCollapse(!datasetCollapse);
           setCollapsed(!collapsed);
         }}
+        role="button"
       >
         <span
           style={{ display: "inline", fontSize: "24px", fontWeight: "bold" }}
@@ -99,7 +107,13 @@ const DatasetCollapse = ({ d, setd, la }) => {
           {d.map((x, index) => {
             return (
               <div key={index} style={{ padding: "10px" }}>
-                <span style={{ display: "inline", fontSize: "20px" }}>
+                <span
+                  style={{
+                    display: "inline",
+                    fontSize: "20px",
+                    fontFamily: "Helvetica, sans-serif",
+                  }}
+                >
                   {x.label}{" "}
                 </span>{" "}
                 <span

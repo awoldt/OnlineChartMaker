@@ -7,7 +7,13 @@ const LabelCollapse = ({ l, sl, sd }) => {
   const [collapsed, setCollapsed] = useState(true); //collapsed on pageload
 
   return (
-    <div style={{ backgroundColor: "rgb(242, 242, 242)", padding: "15px", marginBottom: '25px'}}>
+    <div
+      style={{
+        backgroundColor: "rgb(242, 242, 242)",
+        padding: "15px",
+        marginBottom: "25px",
+      }}
+    >
       <span
         aria-expanded={datasetCollapse}
         aria-controls="labels_collapse_div"
@@ -57,10 +63,14 @@ const LabelCollapse = ({ l, sl, sd }) => {
                     y[index] = x.target.value;
                     sl(y);
                   }}
-                  style={{ width: "400px", display: "inline", marginBottom: '10px'}}
+                  style={{
+                    maxWidth: "400px",
+                    display: "inline",
+                    marginBottom: "10px",
+                  }}
                 ></DebounceInput>
                 <span
-                  style={{ cursor: "pointer", marginLeft: '10px'}}
+                  style={{ cursor: "pointer", marginLeft: "10px" }}
                   onClick={() => {
                     //if no labels, remove all datasets
                     if (l.length == 1) {

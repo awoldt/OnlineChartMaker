@@ -99,7 +99,9 @@ const DatasetCollapse = ({ d, setd, la }) => {
           {d.map((x, index) => {
             return (
               <div key={index} style={{ padding: "10px" }}>
-                <h3 style={{ display: "inline" }}>{x.label} </h3>{" "}
+                <span style={{ display: "inline", fontSize: "20px" }}>
+                  {x.label}{" "}
+                </span>{" "}
                 <span
                   aria-expanded={x.themeCollapse}
                   aria-controls="theme_colors_collapse_div"

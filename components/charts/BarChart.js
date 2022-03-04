@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Collapse } from "react-bootstrap";
 import { DebounceInput } from "react-debounce-input";
 import LabelCollapse from "../LabelCollapse";
 
@@ -30,6 +30,7 @@ ChartJS.register(
 const BarChart = () => {
   const [chartTitle, setChartTitle] = useState("Soda Sales (in Millions)");
   const [indexAxis, setIndexAxis] = useState("x");
+
   const [dataset, setDataset] = useState([
     {
       label: "Coca-Cola",
@@ -75,26 +76,6 @@ const BarChart = () => {
     <Row style={{ padding: "50px" }}>
       <Col lg={8}>
         <Bar options={options} data={data} />
-        <input
-          type="checkbox"
-          id="invert_axis"
-          style={{
-            marginRight: "3px",
-            marginTop: "10px",
-            width: "20px",
-            height: "20px",
-          }}
-          onClick={(x) => {
-            if (x.target.checked == false) {
-              setIndexAxis("x");
-            } else {
-              setIndexAxis("y");
-            }
-          }}
-        />
-        <label htmlFor="invert_axis" style={{ fontSize: "25px" }}>
-          Invert axis
-        </label>
       </Col>
       <Col
         lg={4}
@@ -123,6 +104,25 @@ const BarChart = () => {
         />
         <LabelCollapse l={labels} sl={setLabels} sd={setDataset} />
         <DatasetCollapse d={dataset} setd={setDataset} la={labels} />
+        <div style={{ marginTop: "25px" }}>
+          <span style={{ display: "block" }}>Options</span>
+          <input
+            type="checkbox"
+            id="invert_axis"
+            style={{
+              marginRight: "3px",
+              marginTop: "10px",
+            }}
+            onClick={(x) => {
+              if (x.target.checked == false) {
+                setIndexAxis("x");
+              } else {
+                setIndexAxis("y");
+              }
+            }}
+          />
+          <label htmlFor="invert_axis">Invert axis</label>
+        </div>
       </Col>
     </Row>
   );

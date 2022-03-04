@@ -33,19 +33,19 @@ const BarChart = () => {
   const [dataset, setDataset] = useState([
     {
       label: "Coca-Cola",
-      backgroundColor: "red",
+      backgroundColor: "rgb(255, 0, 0, .8)",
       data: [543, 234, 435],
       themeCollapse: false,
     },
     {
       label: "Fanta",
-      backgroundColor: "orange",
+      backgroundColor: "rgb(255,165,0, .8)",
       data: [645, 765, 234],
       themeCollapse: false,
     },
     {
       label: "Sprite",
-      backgroundColor: "green",
+      backgroundColor: "rgb(0, 128, 0, .8)",
       data: [765, 345, 879],
       themeCollapse: false,
     },
@@ -99,12 +99,17 @@ const BarChart = () => {
       <Col
         lg={4}
         style={{
-          backgroundColor: "#f2f2f2",
+          backgroundColor: "rgb(242, 242, 242, .5)",
           borderRadius: "10px",
-          padding: "10px",
+          padding: "25px",
         }}
       >
-        <label htmlFor="chart_title">Chart Title</label>
+        <label
+          htmlFor="chart_title"
+          style={{ fontSize: "24px", fontWeight: "bold" }}
+        >
+          Chart Title
+        </label>
         <DebounceInput
           onChange={(x) => {
             setChartTitle(x.target.value);
@@ -116,7 +121,7 @@ const BarChart = () => {
           maxLength={100}
           placeholder={chartTitle}
         />
-        <LabelCollapse l={labels} sl={setLabels} sd={setDataset}/>
+        <LabelCollapse l={labels} sl={setLabels} sd={setDataset} />
         <DatasetCollapse d={dataset} setd={setDataset} la={labels} />
       </Col>
     </Row>

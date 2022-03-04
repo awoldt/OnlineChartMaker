@@ -7,30 +7,41 @@ import { useState } from "react";
 
 const DatasetCollapse = ({ d, setd, la }) => {
   const [datasetCollapse, setDatasetCollapse] = useState(false);
+  const [collapsed, setCollapsed] = useState(true); //collapsed on pageload
 
   return (
-    <>
+    <div style={{ backgroundColor: "rgb(242, 242, 242)", padding: "15px" }}>
       <span
         aria-expanded={datasetCollapse}
         aria-controls="dataset_collapse_div"
         style={{ cursor: "pointer", display: "block" }}
         onClick={() => {
           setDatasetCollapse(!datasetCollapse);
+          setCollapsed(!collapsed);
         }}
       >
-        <h2 style={{ display: "inline" }}>Dataset ({d.length})</h2>
+        <span
+          style={{ display: "inline", fontSize: "24px", fontWeight: "bold" }}
+        >
+          Dataset ({d.length})
+        </span>
         <span>
-          <svg
-            style={{ marginLeft: "5px", paddingBottom: "5px" }}
-            xmlns="http://www.w3.org/2000/svg"
-            width="30"
-            height="30"
-            fill="currentColor"
-            className="bi bi-plus"
-            viewBox="0 0 16 16"
-          >
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-          </svg>
+          {collapsed && (
+            <svg
+              style={{ marginLeft: "5px", paddingBottom: "5px" }}
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="currentColor"
+              className="bi bi-plus"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+            </svg>
+          )}
+          {collapsed == false && (
+            <span style={{ fontSize: "30px", marginLeft: "15px" }}>-</span>
+          )}
         </span>
       </span>
 
@@ -196,7 +207,7 @@ const DatasetCollapse = ({ d, setd, la }) => {
           )}
         </div>
       </Collapse>
-    </>
+    </div>
   );
 };
 

@@ -13,14 +13,14 @@ function getAvailableColors(x, y) {
 
 const ThemeCollapse = ({ d, sd, s, i }) => {
   const colors = [
-    "red",
-    "blue",
-    "green",
-    "yellow",
-    "orange",
-    "purple",
-    "black",
-    "grey",
+    "rgb(255, 0, 0, .8)",
+    "rgb(0, 0, 255, .8)",
+    "rgb(0, 128, 0, .8)",
+    "rgb(255, 255, 0, .8)",
+    "rgb(255,165,0, .8)",
+    "rgb(128, 0, 128, .8)",
+    "rgb(0,0,0, .8)",
+    "rgb(128, 128, 128, .8)",
   ];
   const colorsUsed = d.map((x) => {
     return x.backgroundColor;

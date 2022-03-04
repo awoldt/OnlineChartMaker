@@ -13,17 +13,18 @@ const DatasetCollapse = ({ d, setd, la }) => {
       <span
         aria-expanded={datasetCollapse}
         aria-controls="dataset_collapse_div"
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", display: "block" }}
         onClick={() => {
           setDatasetCollapse(!datasetCollapse);
         }}
       >
         <h2 style={{ display: "inline" }}>Dataset ({d.length})</h2>
-        <span style={{ marginLeft: "5px" }}>
+        <span>
           <svg
+            style={{ marginLeft: "5px", paddingBottom: "5px" }}
             xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
+            width="30"
+            height="30"
             fill="currentColor"
             className="bi bi-plus"
             viewBox="0 0 16 16"
@@ -39,33 +40,43 @@ const DatasetCollapse = ({ d, setd, la }) => {
             <p>
               {d.map((x, index) => {
                 if (d.length == 1) {
-                  return <b>{x.label}</b>;
+                  if (x.label !== "") {
+                    return <b>{x.label}</b>;
+                  }
                 } else {
                   if (d.length == 2) {
                     if (index == d.length - 1) {
-                      return (
-                        <span>
-                          {" "}
-                          and <b>{x.label}</b>
-                        </span>
-                      );
+                      if (x.label !== "") {
+                        return (
+                          <span>
+                            {" "}
+                            and <b>{x.label}</b>
+                          </span>
+                        );
+                      }
                     } else {
-                      return <b>{x.label}</b>;
+                      if (x.label !== "") {
+                        return <b>{x.label}</b>;
+                      }
                     }
                   } else {
                     if (index == d.length - 1) {
-                      return (
-                        <span>
-                          {" "}
-                          and <b>{x.label}</b>
-                        </span>
-                      );
+                      if (x.label !== "") {
+                        return (
+                          <span>
+                            {" "}
+                            and <b>{x.label}</b>
+                          </span>
+                        );
+                      }
                     } else {
-                      return (
-                        <span>
-                          <b>{x.label}</b>,{" "}
-                        </span>
-                      );
+                      if (x.label !== "") {
+                        return (
+                          <span>
+                            <b>{x.label}</b>,{" "}
+                          </span>
+                        );
+                      }
                     }
                   }
                 }

@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { Row, Col, Collapse } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { DebounceInput } from "react-debounce-input";
+import LabelCollapse from "../LabelCollapse";
 
 import DatasetCollapse from "../datasetCollapse";
 import {
@@ -115,7 +116,7 @@ const BarChart = () => {
           maxLength={100}
           placeholder={chartTitle}
         />
-
+  <LabelCollapse l={labels} sl={setLabels}/>
         <DatasetCollapse d={dataset} setd={setDataset} la={labels} />
       </Col>
     </Row>

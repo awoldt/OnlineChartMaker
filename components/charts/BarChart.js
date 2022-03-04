@@ -116,7 +116,7 @@ const BarChart = () => {
           maxLength={100}
           placeholder={chartTitle}
         />
-  <LabelCollapse l={labels} sl={setLabels}/>
+        <LabelCollapse l={labels} sl={setLabels} sd={setDataset}/>
         <DatasetCollapse d={dataset} setd={setDataset} la={labels} />
       </Col>
     </Row>

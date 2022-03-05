@@ -6,8 +6,7 @@ import LabelInputs from "./LabelInputs";
 import { useState } from "react";
 
 const DatasetCollapse = ({ d, setd, la }) => {
-  const [datasetCollapse, setDatasetCollapse] = useState(false);
-  const [collapsed, setCollapsed] = useState(true); //collapsed on pageload
+  const [datasetCollapse, setDatasetCollapse] = useState(true);
 
   return (
     <div
@@ -25,7 +24,6 @@ const DatasetCollapse = ({ d, setd, la }) => {
         aria-controls="dataset_collapse_div"
         onClick={() => {
           setDatasetCollapse(!datasetCollapse);
-          setCollapsed(!collapsed);
         }}
         role="button"
       >
@@ -39,14 +37,14 @@ const DatasetCollapse = ({ d, setd, la }) => {
               {d.map((x, index) => {
                 if (d.length == 1) {
                   if (x.label !== "") {
-                    return <b>{x.label}</b>;
+                    return <b key={index}>{x.label}</b>;
                   }
                 } else {
                   if (d.length == 2) {
                     if (index == d.length - 1) {
                       if (x.label !== "") {
                         return (
-                          <span>
+                          <span key={index}>
                             {" "}
                             and <b>{x.label}</b>
                           </span>
@@ -54,14 +52,14 @@ const DatasetCollapse = ({ d, setd, la }) => {
                       }
                     } else {
                       if (x.label !== "") {
-                        return <b>{x.label}</b>;
+                        return <b key={index}>{x.label}</b>;
                       }
                     }
                   } else {
                     if (index == d.length - 1) {
                       if (x.label !== "") {
                         return (
-                          <span>
+                          <span key={index}>
                             {" "}
                             and <b>{x.label}</b>
                           </span>
@@ -70,7 +68,7 @@ const DatasetCollapse = ({ d, setd, la }) => {
                     } else {
                       if (x.label !== "") {
                         return (
-                          <span>
+                          <span key={index}>
                             <b>{x.label}</b>,{" "}
                           </span>
                         );

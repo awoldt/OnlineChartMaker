@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 const CustomNavbar = () => {
   return (
@@ -10,7 +10,7 @@ const CustomNavbar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             
-            <Nav.Link href="#features">Privacy</Nav.Link>
+            <Nav.Link href="/privacy">Privacy</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

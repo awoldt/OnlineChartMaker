@@ -45,7 +45,6 @@ const LineChart = () => {
       data: [543, 234, 435],
       themeCollapse: false,
       borderColor: "rgb(255,165,0, .8)",
-      backgroundColor: "rgb(255,165,0, .8)",
     },
     {
       label: "Zebra",
@@ -53,7 +52,6 @@ const LineChart = () => {
       data: [645, 765, 234],
       themeCollapse: false,
       borderColor: "rgb(0,0,0, .8)",
-      backgroundColor: "rgb(0,0,0, .8)",
     },
     {
       label: "Bear",
@@ -61,7 +59,13 @@ const LineChart = () => {
       data: [765, 345, 879],
       themeCollapse: false,
       borderColor: "rgb(0, 128, 0, .8)",
-      backgroundColor: "rgb(0, 128, 0, .8)",
+    },
+    {
+      label: "Dragonfly",
+      backgroundColor: "rgb(0, 0, 255, .8)",
+      data: [543, 765, 987],
+      themeCollapse: false,
+      borderColor: "rgb(0, 0, 255, .8)",
     },
   ]);
   const [labels, setLabels] = useState(["January", "February", "March"]);

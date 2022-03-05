@@ -1,11 +1,11 @@
 import React from "react";
 import { Collapse, Button } from "react-bootstrap";
-import ThemeCollapse from "./ThemeCollapse";
+import ThemeCollapse from "./themeCollapses/ThemeCollapse";
 import { DebounceInput } from "react-debounce-input";
 import LabelInputs from "./LabelInputs";
 import { useState } from "react";
-import ThemeCollapseLine from "./ThemeCollapseLine";
-import ThemeCollapseRadar from "./ThemeCollapseRadar";
+import ThemeCollapseLine from "./themeCollapses/ThemeCollapseLine";
+import ThemeCollapseRadar from "./themeCollapses/ThemeCollapseRadar";
 
 const DatasetCollapse = ({ d, setd, la, chartType }) => {
   const [datasetCollapse, setDatasetCollapse] = useState(true);

@@ -47,6 +47,8 @@ const Radar = () => {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff"></meta>
         <link rel="canonical" href="https://onlinechartmaker.com/radar" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4106301283765460"
+     crossOrigin="anonymous"></script>
       </Head>
       <CustomNavbar />
       <Container fluid>

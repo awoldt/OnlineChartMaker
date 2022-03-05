@@ -10,6 +10,9 @@ const ChartNav = ({ c }) => {
       <Nav.Item role={"button"}>
         <Nav.Link href="/line">Line</Nav.Link>
       </Nav.Item>
+      <Nav.Item role={"button"}>
+        <Nav.Link href="/radar">Radar</Nav.Link>
+      </Nav.Item>
     </Nav>
   );
 };

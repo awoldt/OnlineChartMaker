@@ -1,16 +1,18 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
-import ChartNav from '../components/ChartNav'
-import RadarChart from '../components/charts/RadarChart'
+import React from "react";
+import { Container } from "react-bootstrap";
+import ChartNav from "../components/ChartNav";
+import RadarChart from "../components/charts/RadarChart";
 
 const line = () => {
   return (
     <Container fluid>
-      <h1 style={{ marginLeft: "25px", marginTop: "25px" }}>Line Chart Maker</h1>
-      <ChartNav c={'/radar'}/>
+      <h1 style={{ marginLeft: "25px", marginTop: "25px" }}>
+        Radar Chart Maker
+      </h1>
+      <ChartNav c={"/radar"} />
       <RadarChart />
     </Container>
   );
-}
+};
 
-export default line
+export default line;

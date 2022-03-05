@@ -12,15 +12,17 @@ import {
   PointElement,
   LineElement,
   Filler,
+  Title,
   Tooltip,
   Legend,
 } from "chart.js";
 
 ChartJS.register(
-    RadialLinearScale,
-    PointElement,
-    LineElement,
-    Filler,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Title,
   Tooltip,
   Legend
 );
@@ -28,31 +30,31 @@ ChartJS.register(
 //////////////////////////////////////////////////////////////////
 
 const RadarChart = () => {
-  const [chartTitle, setChartTitle] = useState("Soda Sales (in Millions)");
+  const [chartTitle, setChartTitle] = useState("# of Votes");
   const [indexAxis, setIndexAxis] = useState("x");
   const [howToUseCollapse, setHowToUseCollapse] = useState(false);
 
   const [dataset, setDataset] = useState([
     {
-      label: "Coca-Cola",
-      backgroundColor: "rgb(255, 0, 0, .8)",
+      label: "Candidate 1",
+      backgroundColor: "rgb(255, 0, 0, .4)",
       data: [543, 234, 435],
       themeCollapse: false,
     },
     {
-      label: "Fanta",
-      backgroundColor: "rgb(255,165,0, .8)",
+      label: "Candidate 2",
+      backgroundColor: "rgb(255,165,0, .4)",
       data: [645, 765, 234],
       themeCollapse: false,
     },
     {
-      label: "Sprite",
-      backgroundColor: "rgb(0, 128, 0, .8)",
+      label: "Candidate 3",
+      backgroundColor: "rgb(0, 128, 0, .4)",
       data: [765, 345, 879],
       themeCollapse: false,
     },
   ]);
-  const [labels, setLabels] = useState(["January", "February", "March"]);
+  const [labels, setLabels] = useState(["Policy  1", "Policy 2", "Policy 3"]);
 
   const data = {
     labels,
@@ -131,9 +133,9 @@ const RadarChart = () => {
           <Collapse in={howToUseCollapse}>
             <div style={{ marginTop: "10px", maxWidth: "600px" }}>
               <p>
-                Making a bar chart has never been easier. All changes made will
-                be automatically reflected as you build your custom chart. Each
-                chart is composed of 3 main parts:
+                Making a radar chart has never been easier. All changes made
+                will be automatically reflected as you build your custom chart.
+                Each chart is composed of 3 main parts:
               </p>
               <ul>
                 <li>Title</li>
@@ -151,20 +153,19 @@ const RadarChart = () => {
                 Datasets are the main building block of every chart. A dataset
                 is a single entity that can be represented with values that will
                 reflect on the chart. For example, in the example chart
-                displayed the 3 different datasets used are Coca-Cola, Fanta,
-                and Sprite. Notice how each of these are all different bars on
-                the graph with different colors. Each dataset will have values
-                that are needed to be displayed alongside each label.{" "}
+                displayed the 3 different datasets used are 3 different
+                canidates that are running for office. Notice how each of these
+                all represent different triangles on the graph with different
+                colors. Each dataset will have values that are needed to be
+                displayed alongside each label.{" "}
               </p>
               <h2>Labels</h2>
               <p>
                 Labels are what each dataset corresponds with on the chart. The
                 number of labels will affect how many values each dataset has
                 access to. For example, in the template chart the 3 main labels
-                used are January, February, and March. With these different
-                labels each representing what month of the year it is, the
-                dataset for each soda will each have access to each month label
-                and be able to plot its value for that label on the chart.{" "}
+                used are the policies and how many votes each candidate got for
+                their opinion on that policy.{" "}
               </p>
             </div>
           </Collapse>
@@ -200,26 +201,12 @@ const RadarChart = () => {
             sd={setDataset}
             st={setChartTitle}
           />
-          <DatasetCollapse d={dataset} setd={setDataset} la={labels} />
-          <div style={{ marginTop: "25px" }}>
-            <span style={{ display: "block" }}>Options</span>
-            <input
-              type="checkbox"
-              id="invert_axis"
-              style={{
-                marginRight: "3px",
-                marginTop: "10px",
-              }}
-              onClick={(x) => {
-                if (x.target.checked == false) {
-                  setIndexAxis("x");
-                } else {
-                  setIndexAxis("y");
-                }
-              }}
-            />
-            <label htmlFor="invert_axis">Invert axis</label>
-          </div>
+          <DatasetCollapse
+            d={dataset}
+            setd={setDataset}
+            la={labels}
+            chartType={"radar"}
+          />
         </div>
       </Col>
     </Row>

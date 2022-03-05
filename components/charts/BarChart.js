@@ -200,7 +200,12 @@ const BarChart = () => {
             sd={setDataset}
             st={setChartTitle}
           />
-          <DatasetCollapse d={dataset} setd={setDataset} la={labels} />
+          <DatasetCollapse
+            d={dataset}
+            setd={setDataset}
+            la={labels}
+            chartType={"bar"}
+          />
           <div style={{ marginTop: "25px" }}>
             <span style={{ display: "block" }}>Options</span>
             <input

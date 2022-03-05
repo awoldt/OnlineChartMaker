@@ -212,7 +212,12 @@ const LineChart = () => {
             sd={setDataset}
             st={setChartTitle}
           />
-          <DatasetCollapse d={dataset} setd={setDataset} la={labels} />
+          <DatasetCollapse
+            d={dataset}
+            setd={setDataset}
+            la={labels}
+            chartType={"line"}
+          />
           <div style={{ marginTop: "25px" }}>
             <span style={{ display: "block" }}>Options</span>
             <input

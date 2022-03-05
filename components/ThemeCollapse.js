@@ -1,3 +1,9 @@
+/* 
+
+THIS THEMECOLLAPSE IS FOR BAR CHARTS ONLY
+
+*/
+
 import React from "react";
 import { Row, Col, Collapse } from "react-bootstrap";
 

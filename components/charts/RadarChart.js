@@ -54,7 +54,11 @@ const RadarChart = () => {
       themeCollapse: false,
     },
   ]);
-  const [labels, setLabels] = useState(["Policy  1", "Policy 2", "Policy 3"]);
+  const [labels, setLabels] = useState([
+    "North Carolina",
+    "California",
+    "New York",
+  ]);
 
   const data = {
     labels,
@@ -153,9 +157,9 @@ const RadarChart = () => {
                 Datasets are the main building block of every chart. A dataset
                 is a single entity that can be represented with values that will
                 reflect on the chart. For example, in the example chart
-                displayed the 3 different datasets used are 3 different
-                canidates that are running for office. Notice how each of these
-                all represent different triangles on the graph with different
+                displayed the 3 different datasets used are all the canidates
+                that are running for office. Notice how each of these all
+                represent different triangles on the graph with different
                 colors. Each dataset will have values that are needed to be
                 displayed alongside each label.{" "}
               </p>
@@ -164,8 +168,8 @@ const RadarChart = () => {
                 Labels are what each dataset corresponds with on the chart. The
                 number of labels will affect how many values each dataset has
                 access to. For example, in the template chart the 3 main labels
-                used are the policies and how many votes each candidate got for
-                their opinion on that policy.{" "}
+                used are the states where all the candidates are running and how
+                many votes each candidate got in said state.{" "}
               </p>
             </div>
           </Collapse>

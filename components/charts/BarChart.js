@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { Row, Col, Collapse } from "react-bootstrap";
+import { Row, Col, Collapse, Button } from "react-bootstrap";
 import { DebounceInput } from "react-debounce-input";
 import LabelCollapse from "../LabelCollapse";
 
@@ -81,13 +81,12 @@ const BarChart = () => {
 
       <Col lg={4}>
         <div style={{ marginBottom: "25px" }}>
-          <div
-            className="btn btn-primary"
+          <Button
             style={{ marginTop: "25px" }}
             onClick={() => {
               setHowToUseCollapse(!howToUseCollapse);
             }}
-            role='button'
+            role="button"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +100,33 @@ const BarChart = () => {
               <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
             </svg>{" "}
             How to Use
-          </div>
+          </Button>
+          <Button
+            style={{ marginTop: "25px", marginLeft: "25px" }}
+            variant="danger"
+            role={"button"}
+            onClick={() => {
+              setChartTitle("");
+              setDataset([]);
+              setLabels([]);
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-arrow-clockwise"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fillRule="evenodd"
+                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+              />
+              <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+            </svg>{" "}
+            Restart
+          </Button>
 
           <Collapse in={howToUseCollapse}>
             <div style={{ marginTop: "10px", maxWidth: "600px" }}>
@@ -133,12 +158,12 @@ const BarChart = () => {
               </p>
               <h2>Labels</h2>
               <p>
-                Labels are what each dataset corresponds with on the chart.
-                The number of labels will affect how many values each dataset
-                has access to. For example, in the template chart the 3 main
-                labels used are January, February, and March. With these
-                different labels each representing what month of the year it is,
-                the dataset for each soda will each have access to each month label
+                Labels are what each dataset corresponds with on the chart. The
+                number of labels will affect how many values each dataset has
+                access to. For example, in the template chart the 3 main labels
+                used are January, February, and March. With these different
+                labels each representing what month of the year it is, the
+                dataset for each soda will each have access to each month label
                 and be able to plot its value for that label on the chart.{" "}
               </p>
             </div>
@@ -164,12 +189,17 @@ const BarChart = () => {
             }}
             debounceTimeout={500}
             className={"form-control"}
-            style={{ maxWidth: "400px", marginBottom: '25px'}}
+            style={{ maxWidth: "400px", marginBottom: "25px" }}
             id="chart_title"
             maxLength={100}
             placeholder={chartTitle}
           />
-          <LabelCollapse l={labels} sl={setLabels} sd={setDataset} />
+          <LabelCollapse
+            l={labels}
+            sl={setLabels}
+            sd={setDataset}
+            st={setChartTitle}
+          />
           <DatasetCollapse d={dataset} setd={setDataset} la={labels} />
           <div style={{ marginTop: "25px" }}>
             <span style={{ display: "block" }}>Options</span>

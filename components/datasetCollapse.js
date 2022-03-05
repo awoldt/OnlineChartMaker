@@ -1,5 +1,5 @@
 import React from "react";
-import { Collapse } from "react-bootstrap";
+import { Collapse, Button } from "react-bootstrap";
 import ThemeCollapse from "./ThemeCollapse";
 import { DebounceInput } from "react-debounce-input";
 import LabelInputs from "./LabelInputs";
@@ -18,40 +18,19 @@ const DatasetCollapse = ({ d, setd, la }) => {
         borderRadius: "10px",
       }}
     >
-      <span
+      <Button
+        variant="secondary"
+        style={{ width: "100%", fontSize: "25px", marginBottom: "25px" }}
         aria-expanded={datasetCollapse}
         aria-controls="dataset_collapse_div"
-        style={{ cursor: "pointer", display: "block" }}
         onClick={() => {
           setDatasetCollapse(!datasetCollapse);
           setCollapsed(!collapsed);
         }}
         role="button"
       >
-        <span
-          style={{ display: "inline", fontSize: "24px", fontWeight: "bold" }}
-        >
-          Dataset ({d.length})
-        </span>
-        <span>
-          {collapsed && (
-            <svg
-              style={{ marginLeft: "5px", paddingBottom: "5px" }}
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              className="bi bi-plus"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-            </svg>
-          )}
-          {collapsed == false && (
-            <span style={{ fontSize: "30px", marginLeft: "15px" }}>-</span>
-          )}
-        </span>
-      </span>
+        Datasets ({d.length})
+      </Button>
 
       <Collapse in={datasetCollapse}>
         <div id="dataset_collapse_div">

@@ -1,8 +1,8 @@
 import { DebounceInput } from "react-debounce-input";
-import { Collapse } from "react-bootstrap";
+import { Collapse, Button } from "react-bootstrap";
 import { useState } from "react";
 
-const LabelCollapse = ({ l, sl, sd }) => {
+const LabelCollapse = ({ l, sl, sd, st }) => {
   const [datasetCollapse, setDatasetCollapse] = useState(false);
   const [collapsed, setCollapsed] = useState(true); //collapsed on pageload
 
@@ -12,44 +12,23 @@ const LabelCollapse = ({ l, sl, sd }) => {
         backgroundColor: "rgb(242, 242, 242)",
         padding: "15px",
         marginBottom: "25px",
-        border: '.5px solid black',
-        borderRadius: '10px'
+        border: ".5px solid black",
+        borderRadius: "10px",
       }}
     >
-      <span
+      <Button
+        variant="secondary"
         aria-expanded={datasetCollapse}
         aria-controls="labels_collapse_div"
-        style={{ cursor: "pointer", display: "block" }}
+        style={{ width: "100%", marginBottom: "25px", fontSize: "25px" }}
         onClick={() => {
           setDatasetCollapse(!datasetCollapse);
           setCollapsed(!collapsed);
         }}
-        role='button'
+        role="button"
       >
-        <span
-          style={{ display: "inline", fontSize: "24px", fontWeight: "bold" }}
-        >
-          Labels ({l.length})
-        </span>
-        <span>
-          {collapsed && (
-            <svg
-              style={{ marginLeft: "5px", paddingBottom: "5px" }}
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              className="bi bi-plus"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-            </svg>
-          )}
-          {collapsed == false && (
-            <span style={{ fontSize: "30px", marginLeft: "15px" }}>-</span>
-          )}
-        </span>
-      </span>
+        Labels ({l.length})
+      </Button>
 
       <Collapse in={datasetCollapse}>
         <div id="labels_collapse_div">
@@ -75,12 +54,13 @@ const LabelCollapse = ({ l, sl, sd }) => {
                 <span
                   style={{ cursor: "pointer", marginLeft: "10px" }}
                   onClick={() => {
-                    //if no labels, remove all datasets
+                    //if no labels, remove all datasets and title
                     if (l.length == 1) {
                       const q = [...l];
                       q.splice(index, 1);
                       sl(q);
                       sd([]);
+                      st("");
                     } else {
                       const q = [...l];
                       q.splice(index, 1);

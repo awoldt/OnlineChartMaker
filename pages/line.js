@@ -4,8 +4,23 @@ import LineChart from "../components/charts/LineChart";
 import ChartNav from "../components/ChartNav";
 import CustomNavbar from "../components/CustomNavbar";
 import Head from "next/head";
+import { useEffect } from "react";
 
-const line = () => {
+const Line = () => {
+  useEffect(() => {
+    const ga = document.createElement("script");
+    ga.src = "https://www.googletagmanager.com/gtag/js?id=G-3C7HVYRD4Z";
+    ga.async = true;
+    document.head.appendChild(ga);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-3C7HVYRD4Z");
+  });
   return (
     <>
       <Head>
@@ -45,4 +60,4 @@ const line = () => {
   );
 };
 
-export default line;
+export default Line;

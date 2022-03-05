@@ -4,8 +4,23 @@ import BarChart from "../components/charts/BarChart";
 import ChartNav from "../components/ChartNav";
 import CustomNavbar from "../components/CustomNavbar";
 import Head from "next/head";
+import { useEffect } from "react";
 
 const Chart = () => {
+  useEffect(() => {
+    const ga = document.createElement("script");
+    ga.src = "https://www.googletagmanager.com/gtag/js?id=G-3C7HVYRD4Z";
+    ga.async = true;
+    document.head.appendChild(ga);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-3C7HVYRD4Z");
+  });
   return (
     <>
       <Head>

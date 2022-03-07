@@ -26,6 +26,7 @@ export default function Home() {
     <>
       <Head>
         <title>Easy & Powerful Chart Maker</title>
+        <meta name="description" content="Make a free bar, line, or radar chart with easy to use tools and instant refresh to see your changes"></meta>
         <link
           rel="apple-touch-icon"
           sizes="76x76"

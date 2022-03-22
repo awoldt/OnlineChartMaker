@@ -8,10 +8,7 @@ const CustomNavbar = () => {
         <Navbar.Brand href="/" title="Home">OnlineChartMaker</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            
-            <Nav.Link href="/privacy">Privacy</Nav.Link>
-          </Nav>
+       
         </Navbar.Collapse>
       </Container>
     </Navbar>
